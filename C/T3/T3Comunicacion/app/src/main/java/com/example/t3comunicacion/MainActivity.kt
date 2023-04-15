@@ -12,21 +12,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
 
     override fun onStart() {
         super.onStart()
         // acciones
         binding.botonLogin.setOnClickListener {
-
-
-            binding.editNombre.text.isEmpty()
-            binding.editPass.text.toString().length > 0
-
             if (binding.editNombre.text.isEmpty() || binding.editPass.text.isEmpty()) {
                 // algun campo sin rellenar
                 // aviso de faltan datos
@@ -44,18 +37,16 @@ class MainActivity : AppCompatActivity() {
                         val bundle = Bundle()
                         bundle.putString("nombre",binding.editNombre.text.toString())
                         bundle.putString("password",binding.editPass.text.toString())
-                        startActivity(intent,bundle)
+                        intent.putExtras(bundle)
+                        startActivity(intent)
                     } else {
                         startActivity(intent)
                     }
-
-
 
                 } else {
                     // alguno de los datos está mal
                     // aviso de datos incorrectos
                     Snackbar.make(binding.root, "Datos incorrectos", Snackbar.LENGTH_SHORT).show()
-
                 }
             }
         }

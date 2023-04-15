@@ -19,5 +19,8 @@ class SecondActivity : AppCompatActivity() {
         // recuperar datos
         nombreRecuperado = intent.extras?.getString("nombre") ?: "valor por defecto"
         passRecuperado = intent.extras?.getString("password") ?: "valor por defecto"
+
+        binding.adminName.text = nombreRecuperado
+        binding.adminPwd.text = passRecuperado
     }
 }
